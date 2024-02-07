@@ -1,13 +1,23 @@
 let items = [
     {
+        "name": "Kurzschwert",
+        "type": "Nahkampf",
+        "damage": 6
+    },
+    {
         "name": "Langschwert",
         "type": "Nahkampf",
         "damage": 8
     },
     {
-        "name": "Kurzschwert",
-        "type": "Nahkampf",
-        "damage": 6
+        "name": "Bogen",
+        "type": "Fernkampf",
+        "damage": 5
+    },
+    {
+        "name": "Armbrust",
+        "type": "Fernkampf",
+        "damage": 7
     },
     {
         "name": "Lederhelm",
@@ -56,8 +66,13 @@ let items = [
     },
     {
         "name": "Heiltrank",
-        "type": "Verbrauchsgegenstand",
-        "additionalInfo": "Heilt 20 Lebenspunkte"
+        "type": "Verbrauchsgut",
+        "additionalInfo": "Heilt sofort 20 Lebenspunkte"
+    },
+    {
+        "name": "Rauchbombe",
+        "type": "Verbrauchsgut",
+        "additionalInfo": "Erzeugt eine Rauchwolke mit 4m Durchmesser, die die Sicht behindert"
     }
 ];
 
