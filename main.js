@@ -1,78 +1,109 @@
 let items = [
     {
+        "name": "Dolch",
+        "type": ["Waffe", "Nahkampf"],
+        "damage": 4
+    },
+    {
         "name": "Kurzschwert",
-        "type": "Nahkampf",
+        "type": ["Waffe", "Nahkampf"],
         "damage": 6
     },
     {
         "name": "Langschwert",
-        "type": "Nahkampf",
+        "type": ["Waffe", "Nahkampf"],
         "damage": 8
     },
     {
+        "name": "Speer",
+        "type": ["Waffe", "Nahkampf"],
+        "damage": 7,
+    },
+    {
         "name": "Bogen",
-        "type": "Fernkampf",
-        "damage": 5
+        "type": ["Waffe", "Fernkampf"],
+        "damage": 5,
+        "additionalInfo": "Verbraucht 1x Pfeil pro Schuss"
     },
     {
         "name": "Armbrust",
-        "type": "Fernkampf",
-        "damage": 7
+        "type": ["Waffe", "Fernkampf"],
+        "damage": 7,
+        "additionalInfo": "Verbraucht 1x Pfeil pro Schuss"
     },
     {
         "name": "Lederhelm",
-        "type": "Helm",
+        "type": ["Rüstung", "Helm"],
         "armor": 0.5
     },
     {
         "name": "Lederbrustpanzer",
-        "type": "Brustpanzer",
+        "type": ["Rüstung", "Brustpanzer"],
         "armor": 1
     },
     {
         "name": "Lederbeinschienen",
-        "type": "Hose",
+        "type": ["Rüstung", "Hose"],
         "armor": 0.5
     },
     {
         "name": "Kettenhelm",
-        "type": "Helm",
+        "type": ["Rüstung", "Helm"],
         "armor": 1
     },
     {
         "name": "Kettenhemd",
-        "type": "Brustpanzer",
+        "type": ["Rüstung", "Brustpanzer"],
         "armor": 2
     },
     {
         "name": "Kettenhose",
-        "type": "Hose",
+        "type": ["Rüstung", "Hose"],
         "armor": 1
     },
     {
         "name": "Vollvisierhelm",
-        "type": "Helm",
+        "type": ["Rüstung", "Helm"],
         "armor": 1.5
     },
     {
         "name": "Plattenbrustpanzer",
-        "type": "Brustpanzer",
+        "type": ["Rüstung", "Brustpanzer"],
         "armor": 3
     },
     {
         "name": "Plattenbeinschienen",
-        "type": "Hose",
+        "type": ["Rüstung", "Hose"],
         "armor": 1.5
     },
     {
+        "name": "Gewöhnlicher Pfeil",
+        "type": ["Verbrauchsgut", "Munition"],
+    },
+    {
+        "name": "Brandfeil",
+        "type": ["Verbrauchsgut", "Munition"],
+        "additionalInfo": "Verursacht zusätzlich 3 Feuerschaden<br>Kann leicht entzündbare Materialien in Brand setzen"
+    },
+    {
+        "name": "Giftpfeil",
+        "type": ["Verbrauchsgut", "Munition"],
+        "additionalInfo": "Verursacht Vergiftung II für 3 Runden"
+    },
+    {
         "name": "Heiltrank",
-        "type": "Verbrauchsgut",
+        "type": ["Verbrauchsgut"],
         "additionalInfo": "Heilt sofort 20 Lebenspunkte"
     },
     {
         "name": "Rauchbombe",
-        "type": "Verbrauchsgut",
+        "type": ["Verbrauchsgut"],
         "additionalInfo": "Erzeugt eine Rauchwolke mit 4m Durchmesser, die die Sicht behindert"
+    },
+    {
+        "name": "Gift",
+        "type": ["Verbrauchsgut"],
+        "additionalInfo": "Kann auf Waffen aufgetragen werden, um beim nächsten Treffer Vergiftung III für 3 Runden zu verursachen<br>Verursacht Vergiftung V für 3 Runden, wenn konsumiert<br>Kann genutzt werden, um 5 gewöhnliche Pfeile in Giftpfeile zu verwandeln",
     }
 ];
 
@@ -178,9 +209,11 @@ function loadItemRegistry() {
     let dropdownContent = "<select id='item-selection'><option value='all'>Alle Kategorien</option>";
     let itemTypes = [];
     for (let i = 0; i < items.length; i++) {
-        if (!itemTypes.includes(items[i].type)) {
-            itemTypes.push(items[i].type);
-            dropdownContent += `<option value="${items[i].type}">${items[i].type}</option>`;
+        for (let j = 0; j < items[i].type.length; j++) {
+            if (!itemTypes.includes(items[i].type[j])) {
+                itemTypes.push(items[i].type[j]);
+                dropdownContent += `<option value="${items[i].type[j]}">${items[i].type[j]}</option>`;
+            }
         }
     }
     dropdownContent += "</select>";
@@ -208,18 +241,18 @@ function filterItems() {
         <th>Stats</th>
     <tr>`;
     for (let i = 0; i < items.length; i++) {
-        if (document.getElementById("item-selection").value !== "all" && items[i].type !== document.getElementById("item-selection").value) {
+        if (document.getElementById("item-selection").value !== "all" && !items[i].type.includes(document.getElementById("item-selection").value)) {
             continue;
         }
         let additionalInfo = "";
         if (items[i].hasOwnProperty("damage")) {
-            additionalInfo += `${items[i].damage} Schaden`;
+            additionalInfo += `${items[i].damage} Schaden<br>`;
         }
         if (items[i].hasOwnProperty("armor")) {
-            additionalInfo += `+${items[i].armor} Rüstungspunkte`;
+            additionalInfo += `+${items[i].armor} Rüstungspunkte<br>`;
         }
         if (items[i].hasOwnProperty("additionalInfo")) {
-            additionalInfo += items[i].additionalInfo;
+            additionalInfo += items[i].additionalInfo + "<br>";
         }
 
         content += `
