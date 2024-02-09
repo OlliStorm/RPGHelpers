@@ -15,9 +15,14 @@ let items = [
         "damage": 8
     },
     {
-        "name": "Speer",
+        "name": "Axt",
         "type": ["Waffe", "Nahkampf"],
-        "damage": 7,
+        "damage": 6
+    },
+    {
+        "name": "Speer",
+        "type": ["Waffe", "Nahkampf", "Fernkampf"],
+        "additionalInfo": "7 Schaden im Nahkampf<br>5 Schaden wenn Geworfen"
     },
     {
         "name": "Bogen",
@@ -91,9 +96,24 @@ let items = [
         "additionalInfo": "Verursacht Vergiftung II für 3 Runden"
     },
     {
+        "name": "Schwacher Heiltrank",
+        "type": ["Verbrauchsgut"],
+        "additionalInfo": "Heilt sofort 10 Lebenspunkte"
+    },
+    {
         "name": "Heiltrank",
         "type": ["Verbrauchsgut"],
         "additionalInfo": "Heilt sofort 20 Lebenspunkte"
+    },
+    {
+        "name": "Starker Heiltrank",
+        "type": ["Verbrauchsgut"],
+        "additionalInfo": "Heilt sofort 50 Lebenspunkte"
+    },
+    {
+        "name": "Trank der Schnelligkeit",
+        "type": ["Verbrauchsgut"],
+        "additionalInfo": "Erhöht die Kampfpunktezahl um 1 für 3 Runden",
     },
     {
         "name": "Rauchbombe",
@@ -101,9 +121,34 @@ let items = [
         "additionalInfo": "Erzeugt eine Rauchwolke mit 4m Durchmesser, die die Sicht behindert"
     },
     {
+        "name": "Wurfbombe",
+        "type": ["Verbrauchsgut"],
+        "additionalInfo": "Verursacht 10 Schaden in einem 3m Radius<br>Schleudert getroffene Gegner weg"
+    },
+    {
         "name": "Gift",
         "type": ["Verbrauchsgut"],
         "additionalInfo": "Kann auf Waffen aufgetragen werden, um beim nächsten Treffer Vergiftung III für 3 Runden zu verursachen<br>Verursacht Vergiftung V für 3 Runden, wenn konsumiert<br>Kann genutzt werden, um 5 gewöhnliche Pfeile in Giftpfeile zu verwandeln",
+    },
+    {
+        "name": "Starkes Gift",
+        "type": ["Verbrauchsgut"],
+        "additionalInfo": "Kann auf Waffen aufgetragen werden, um beim nächsten Treffer Vergiftung V für 3 Runden zu verursachen<br>Verursacht Vergiftung X für 3 Runden, wenn konsumiert<br>Kann genutzt werden, um 10 gewöhnliche Pfeile in Giftpfeile zu verwandeln",
+    },
+    {
+        "name": "Fackel",
+        "type": ["Waffe", "Nahkampf"],
+        "additionalInfo": "Verursacht 3 Feuerschaden<br>Kann leicht entzündbare Materialien in Brand setzen"
+    },
+    {
+        "name": "Holzschild",
+        "type": ["Schild"],
+        "armor": 1
+    },
+    {
+        "name": "Eisenschild",
+        "type": ["Schild"],
+        "armor": 2
     }
 ];
 
